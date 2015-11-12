@@ -10,16 +10,16 @@ class SwaggerCodeGenTaskTest {
     @Test
     public void canAddTaskToProject() {
         Project project = ProjectBuilder.builder().build()
-        def task = project.task('swaggerCodeGen', type: SwaggerCodeGenTask)
+        def task = project.task('swagger', type: SwaggerCodeGenTask)
         assertTrue(task instanceof SwaggerCodeGenTask)
     }
 
     @Test
     public void basicConfiguration() {
         Project project = ProjectBuilder.builder().build()
-        project.set("swaggerInputSpec", 'src/test/resources/petstore.yaml')
+        project.set("swaggerInputSpec", 'petstore.yaml')
         project.set("swaggerLanguage", "java")
-        def task = project.task('swaggerCodeGen', type: SwaggerCodeGenTask)
+        def task = project.task('swagger', type: SwaggerCodeGenTask, dependsOn: 'processTestResources')
         assertTrue(task instanceof SwaggerCodeGenTask)
         task.execute()
     }
