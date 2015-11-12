@@ -2,7 +2,6 @@ swagger-codegen-maven-plugin
 ============================
 
 [![Build Status](https://travis-ci.org/thebignet/swagger-codegen-gradle-plugin.svg?branch=master)](https://travis-ci.org/thebignet/swagger-codegen-gradle-plugin)
-[![Gradle version][gradle-img]][gradle-url]
 
 A Gradle plugin to support the [swagger](http://swagger.io) code generation project
 
@@ -37,6 +36,8 @@ gradle swagger
 - `inputSpec` - swagger spec file path
 - `language` - target generation language
 - `templateDirectory` - directory with mustache templates
+
+- TODO output directory
 
 -- 
 [maven-url]: https://search.maven.org/#search%7Cga%7C1%7Cswagger-codegen-maven-plugin
