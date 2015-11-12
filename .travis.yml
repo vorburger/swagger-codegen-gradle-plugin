@@ -1,6 +1,6 @@
 sudo: false
 language: java
-script: mvn clean verify
+script: gradle clean test
 jdk:
   - oraclejdk7
   - oraclejdk8
