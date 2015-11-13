@@ -1,4 +1,4 @@
-package com.detoeuf
+package org.detoeuf
 
 import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
@@ -10,7 +10,7 @@ class SwaggerCodeGenPluginTest {
     @Test
     public void swaggerCodeGenPluginAddsSwaggerCodeGenTaskToProject() {
         Project project = ProjectBuilder.builder().build()
-        project.apply plugin: 'swaggerCodeGen'
+        project.apply plugin: 'org.detoeuf.swagger-code-gen'
 
         assertTrue(project.tasks.swagger instanceof SwaggerCodeGenTask)
     }

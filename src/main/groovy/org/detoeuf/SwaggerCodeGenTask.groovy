@@ -1,4 +1,4 @@
-package com.detoeuf
+package org.detoeuf
 import io.swagger.codegen.ClientOptInput
 import io.swagger.codegen.ClientOpts
 import io.swagger.codegen.CodegenConfig

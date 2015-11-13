@@ -1,4 +1,4 @@
-package com.detoeuf
+package org.detoeuf
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project

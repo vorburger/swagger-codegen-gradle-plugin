@@ -16,7 +16,7 @@ ext {
     swaggerLanguage = 'java'
 }
 
-apply plugin: 'swaggerCodeGen'
+apply plugin: 'org.detoeuf.swagger-code-gen'
 
 sourceSets {
     swagger {
@@ -38,7 +38,3 @@ gradle swagger
 - `templateDirectory` - directory with mustache templates
 
 - TODO output directory
-
--- 
-[maven-url]: https://search.maven.org/#search%7Cga%7C1%7Cswagger-codegen-maven-plugin
-[maven-img]: https://img.shields.io/maven-central/v/com.garethevans.plugin/swagger-codegen-maven-plugin
