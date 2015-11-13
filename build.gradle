@@ -28,7 +28,7 @@ dependencies {
     compile 'io.swagger:swagger-codegen:2.1.4'
 }
 
-group = 'com.detoeuf'
+group = 'org.detoeuf'
 version = '1.0-SNAPSHOT'
 
 uploadArchives {
