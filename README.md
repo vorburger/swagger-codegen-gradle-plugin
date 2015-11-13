@@ -8,7 +8,7 @@ A Gradle plugin to support the [swagger](http://swagger.io) code generation proj
 Usage
 ============================
 
-Add to your `build->plugins` section (default phase is `generate-sources` phase)
+Add to your `build.gradle` the following
 ```groovy
 ext {
     swaggerInputSpec = 'src/main/resources/petstore.yaml'
@@ -25,7 +25,7 @@ sourceSets {
 }
 ```
 
-Followed by:
+Launch with:
 
 ```
 gradle swagger
