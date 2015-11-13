@@ -17,8 +17,10 @@ class SwaggerCodeGenTaskTest {
     @Test
     public void basicConfiguration() {
         Project project = ProjectBuilder.builder().build()
-        project.set("swaggerInputSpec", 'petstore.yaml')
-        project.set("swaggerLanguage", "java")
+        project.set('swaggerInputSpec', 'petstore.yaml')
+        project.set('swaggerLanguage', 'java')
+        project.set('swaggerOutput', 'target/generated-sources/swagger')
+        project.set('swaggerSrc', 'src/swagger')
         def task = project.task('swagger', type: SwaggerCodeGenTask, dependsOn: 'processTestResources')
         assertTrue(task instanceof SwaggerCodeGenTask)
         task.execute()
