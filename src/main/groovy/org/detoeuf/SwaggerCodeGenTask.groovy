@@ -12,7 +12,7 @@ class SwaggerCodeGenTask extends DefaultTask {
 
     @TaskAction
     def swaggerCodeGen() {
-        Swagger swagger = new SwaggerParser().read(getLocation(project.swaggerInputSpec))
+        Swagger swagger = new SwaggerParser().read(project.swaggerInputSpec)
         CodegenConfig config = forName(project.swaggerLanguage)
         config.setOutputDir(project.file('target/generated-sources/swagger').absolutePath)
 
@@ -27,14 +27,6 @@ class SwaggerCodeGenTask extends DefaultTask {
         project.copy {
             from 'target/generated-sources/swagger/src/main/java'
             into 'src/swagger/java'
-        }
-    }
-
-    private String getLocation(String inputFile){
-        if(project.swaggerInputSpec.startsWith('classpath:')) {
-            ClassLoader.getSystemResource(inputFile.replace('classpath:','')).toString().replace('file:','')
-        } else {
-            inputFile
         }
     }
 
