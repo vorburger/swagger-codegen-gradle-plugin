@@ -34,7 +34,10 @@ gradle swagger
 ### Configuration parameters
 
 - `swaggerInputSpec` - swagger spec file path
-- `swaggerLanguage` - target generation language
+- `swaggerLanguage` - target generation language. Adapt sourceSet accordingly.
 - `swaggerTemplateDirectory` - directory with mustache templates
+- `swaggerApiPackage` - package for default API
+- `swaggerInvokerPackage` - package for invoker
+- `swaggerModelPackage` - package for models
 - `swaggerOutput` - target output path (default is ${project.build.directory}/generated-sources/swagger)
 - `swaggerSrc` - target source directory (default is ${project.root.directory}/src/swagger).  This directory should be added as as source set

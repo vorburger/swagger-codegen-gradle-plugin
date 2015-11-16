@@ -20,6 +20,9 @@ class SwaggerCodeGenTaskTest {
     public void basicConfiguration() {
         Project project = ProjectBuilder.builder().build()
         project.set('swaggerInputSpec', 'petstore.yaml')
+        project.set('swaggerApiPackage', 'com.orange.testApi')
+        project.set('swaggerInvokerPackage', 'com.orange.testPackage')
+        project.set('swaggerModelPackage', 'com.orange.testModel')
         project.set('swaggerLanguage', 'java')
         project.set('swaggerOutput', 'target/generated-sources/swagger')
         project.set('swaggerSrc', 'src/swagger')
