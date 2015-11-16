@@ -17,6 +17,7 @@ class SwaggerCodeGenTask extends DefaultTask {
 
         def outputDir = project.hasProperty('project.swaggerOutput') ? project.swaggerOutput : 'target/generated-sources/swagger'
         config.setOutputDir(project.file(outputDir).absolutePath)
+        project.delete(outputDir)
 
         if (project.has('swaggerTemplateDirectory')) {
             config.additionalProperties().put("templateDir", project.file(project.swaggerTemplateDirectory).absolutePath)
@@ -29,8 +30,8 @@ class SwaggerCodeGenTask extends DefaultTask {
         project.delete(srcDir)
         new DefaultGenerator().opts(input).generate()
         project.copy {
-            from outputDir+'/src/main/java'
-            into srcDir+'/java'
+            from outputDir+'/src/main/'+project.swaggerLanguage
+            into srcDir+'/'+project.swaggerLanguage
         }
     }
 
