@@ -9,5 +9,8 @@ release.properties
 .project
 .idea
 *.iml
+*.ipr
+*.iws
 .DS_Store
 generated-sources
+.gradle
