@@ -14,3 +14,4 @@ release.properties
 .DS_Store
 generated-sources
 .gradle
+build/
