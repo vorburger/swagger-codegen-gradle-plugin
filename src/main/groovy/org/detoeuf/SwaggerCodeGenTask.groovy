@@ -16,14 +16,14 @@ class SwaggerCodeGenTask extends DefaultTask {
 
     @TaskAction
     def swaggerCodeGen() {
-        Swagger swagger = new SwaggerParser().read(project.swaggerInputSpec)
+        Swagger swagger = new SwaggerParser().read(project.file(project.swaggerInputSpec).absolutePath)
         CodegenConfig config = forName(project.swaggerLanguage)
 
-        def outputDir = project.hasProperty('project.swaggerOutput') ? project.swaggerOutput : 'target/generated-sources/swagger'
+        def outputDir = project.hasProperty('swaggerOutput') ? project.swaggerOutput : 'target/generated-sources/swagger'
         config.setOutputDir(project.file(outputDir).absolutePath)
         project.delete(outputDir)
 
-        if (project.has('swaggerTemplateDirectory')) {
+        if (project.hasProperty('swaggerTemplateDirectory')) {
             config.additionalProperties().put("templateDir", project.file(project.swaggerTemplateDirectory).absolutePath)
         }
         if(project.hasProperty('swaggerApiPackage')){
@@ -40,7 +40,7 @@ class SwaggerCodeGenTask extends DefaultTask {
 
         input.setConfig(config)
 
-        def srcDir = project.hasProperty('project.swaggerSrc') ? project.swaggerSrc : 'src/swagger'
+        def srcDir = project.hasProperty('swaggerSrc') ? project.swaggerSrc : 'src/swagger'
         project.delete(srcDir)
         new DefaultGenerator().opts(input).generate()
         project.copy {
