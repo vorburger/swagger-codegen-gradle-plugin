@@ -15,17 +15,22 @@ class SwaggerCodeGenTaskTest {
         assertTrue(task instanceof SwaggerCodeGenTask)
     }
 
-    @Ignore("Wait until swagger-codegen detects file type correctly.  Version 2.1.3 cannot get yaml file from classpath which is why this test is ignored")
+   // @Ignore("Wait until swagger-codegen detects file type correctly.  Version 2.1.5 (?) cannot get yaml file from classpath which is why this test is ignored")
     @Test
     public void basicConfiguration() {
+
+        URL url = Thread.currentThread().getContextClassLoader().getResource("petstore.yaml");
+        File file = new File(url.getPath());
+
         Project project = ProjectBuilder.builder().build()
-        project.set('swaggerInputSpec', 'petstore.yaml')
+        project.set('swaggerInputSpec', file.toString())
         project.set('swaggerApiPackage', 'com.orange.testApi')
         project.set('swaggerInvokerPackage', 'com.orange.testPackage')
         project.set('swaggerModelPackage', 'com.orange.testModel')
         project.set('swaggerLanguage', 'java')
         project.set('swaggerOutput', 'target/generated-sources/swagger')
         project.set('swaggerSrc', 'src/swagger')
+        project.set('swaggerLibrary', 'okhttp-gson')
         def task = project.task('swagger', type: SwaggerCodeGenTask, dependsOn: 'processTestResources')
         assertTrue(task instanceof SwaggerCodeGenTask)
         task.execute()

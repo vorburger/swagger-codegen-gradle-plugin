@@ -36,6 +36,10 @@ class SwaggerCodeGenTask extends DefaultTask {
             config.additionalProperties().put('modelPackage', project.swaggerModelPackage)
         }
 
+        if(project.hasProperty("swaggerLibrary")){
+            config.additionalProperties().put('library', project.swaggerLibrary)
+        }
+
         ClientOptInput input = new ClientOptInput().opts(new ClientOpts()).swagger(swagger)
 
         input.setConfig(config)
@@ -49,7 +53,7 @@ class SwaggerCodeGenTask extends DefaultTask {
         }
     }
 
-    private void applyConfigFileSettings(final CodegenConfig config, final File swaggerConfigFile) {
+    private static void applyConfigFileSettings(final CodegenConfig config, final File swaggerConfigFile) {
         Config genConfig = ConfigParser.read(swaggerConfigFile.absolutePath);
         if (null != genConfig) {
             for (CliOption langCliOption : config.cliOptions()) {
@@ -60,7 +64,7 @@ class SwaggerCodeGenTask extends DefaultTask {
         }
     }
 
-    private CodegenConfig forName(String name) {
+    private static CodegenConfig forName(String name) {
         ServiceLoader<CodegenConfig> loader = ServiceLoader.load(CodegenConfig.class)
         for (CodegenConfig config : loader) {
             if (config.getName().equals(name)) {
