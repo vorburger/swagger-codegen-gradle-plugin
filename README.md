@@ -8,15 +8,20 @@ A Gradle plugin to support the [swagger](http://swagger.io) code generation proj
 Usage
 ============================
 
-Add to your `build.gradle` the following
+Add this plugin to your `build.gradle` as described on https://plugins.gradle.org/plugin/org.detoeuf.swagger-code-gen, and then add the following to configure it:
+
 ```groovy
+// as per https://plugins.gradle.org/plugin/org.detoeuf.swagger-code-gen, either:
+//    plugins { id "org.detoeuf.swagger-code-gen" version .. }
+// or:
+//    buildscript { repositories { ...
+//    apply plugin: 'org.detoeuf.swagger-code-gen'
+
 ext {
     swaggerInputSpec = 'src/main/resources/petstore.yaml'
     swaggerOutput = 'src/swagger'
     swaggerLanguage = 'java'
 }
-
-apply plugin: 'org.detoeuf.swagger-code-gen'
 
 sourceSets {
     swagger {
